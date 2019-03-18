@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Redis统计</title>
+    <script src="../js/scripts/boot.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="../css/webPublic.css" />
+    <style>
+    	
+    	html, body{
+	        font-size:12px;
+	        padding:5px;
+	        margin: 0;
+		    border: 0;
+		    height: 97%;
+		    width: 99.2%;
+	        
+	    }
+		
+		
+    </style>
+</head>
+<body > 
+
+	<div class="mini-panel"  title="查询条件" style="width: 100%;" id="condition">
+		<div style="padding: 0px;">
+	       <table  style="width: 90%;margin-bottom:2px " class="query">
+		       		 
+		           <tr>
+		              
+		               	
+		               	<td align="right" width="10%" >时间：</td>
+						<td align="left" width="25%">
+							<input style="width: 40%;margin-right:3px;" id="time1" name="time1"
+							 class="mini-datepicker" showtime="true" format="yyyy-MM-dd HH:mm" ondrawdate="onDrawDate" value="2019-03-07 10:00" textField="text" valueField="id"
+							 />—<input
+							style="width: 40%;margin-left:3px;" id="time2" name="time2" 
+							 class="mini-datepicker" showtime="true" format="yyyy-MM-dd HH:mm" value="2019-03-07 15:00" ondrawdate="onDrawDate" textField="text" valueField="id"
+							 />
+					 	</td>
+					 	<td align="right" width="5%" style="white-space: nowrap;">状态：</td>
+		               	<td align="left" width="13%" style="white-space: nowrap;">
+		                   <input maxlength="30" width="90%" id="status" name="status" allowInput="false" class="mini-combobox" data="[{id:'1',text:'正常'},{id:'2',text:'警告'},{id:'3',text:'严重'}]"/>
+		                   
+		               	</td> 	                                       
+		               	<td align="right" width="7%" style="white-space: nowrap;">主从角色：</td>
+		               	<td align="left" width="13%" style="white-space: nowrap;">
+		                   <input maxlength="30" width="90%" id="p_c" name="p_c" allowInput="false" class="mini-combobox" data="[{id:'1',text:'主服务器'},{id:'2',text:'从服务器'}]"/>
+		                   
+		               	</td> 
+		           </tr> 
+					<tr><td colspan="6" align="center">
+		               		<a class="mini-button button-m" iconCls="icon-search" style="text-align: center;margin-left: 140px" href="javascript:submit();">查询</a>
+							<a class="mini-button button-m" style="margin-left:15px;text-align: center;" iconCls="icon-reload" href="javascript:doReset();">重置</a>	         
+			
+		               	</td>
+		            </tr>
+		   		</table> 
+			</div>
+	</div>
+
+	<div class="mini-panel datapanel" title="Redis信息列表" id="setpanel" width="100%">
+	                
+		<div id="resultGrid" class="mini-datagrid"
+			style="width: 100%;height:440px;" pageSize="10"
+			allowAlternating="true" idField="collectionid" url="">
+			<div property="columns">
+				<div type="indexcolumn" width="50">序号</div>
+				<div field="masterUrl" width="120" headerAlign="center">主机地址</div>
+            	<div field="status" width="100" headerAlign="center">状态</div>
+				<div field="version" width="80" headerAlign="center">版本</div>
+				<div field="hostSystem" width="80" headerAlign="center">宿主操作系统</div>
+				<div field="PID" width="80" headerAlign="center">进程PID</div>
+				<div field="RWStaus" width="80" headerAlign="center">读写状态</div>
+				<div field="p_c" width="80" headerAlign="center">主从角色</div>
+				<div field="SLAVENum" width="80" headerAlign="center">SLAVE数量</div>
+				<div field="Clitens" width="80" headerAlign="center">Clitens</div>
+				
+            	<div header="内存">
+	                <div property="columns">
+	                    <div field="CPUTotal" width="100">总量</div>
+	                    <div field="CPUUsed" width="100" allowSort="true">已使用</div>
+	                     <div field="CPUA" width="100" allowSort="true">使用率</div>
+	                     <div field="CPUUsedMax" width="100" allowSort="true">消耗峰值</div>
+	                </div>
+            	</div>
+				<div field="keyTotal" width="80" headerAlign="center">key总数</div>
+
+            	<div header="运行时间">
+	                <div property="columns">
+	                    <div field="fuctionSeconds" width="100">秒数</div>
+	                    <div field="fuctionDays" width="100" allowSort="true">天数</div>
+	                    
+	                </div>
+            	</div>
+				<div field="usedCPU" width="100" headerAlign="center">占用CPU(%)</div>
+				<div field="searchPeriod" width="150" headerAlign="center">检查时间</div>
+			</div>
+    	</div> 
+	</div>
+	
+    <script type="text/javascript">
+        mini.parse();
+        var grid=mini.get("resultGrid");
+       
+
+        var data=[{masterUrl: "192.168.1.80:6379",version:"4.0.2",hostSystem:"Linux 3.10.0-693.el7.x86_64 x86_64",PID:"8904",RWStaus:"正常",p_c:"主服务器",SLAVENum:"1",Clitens:"12",CPUTotal:"3.63M",CPUUsed:"2.04M",CPUA:"56",CPUUsedMax:"3.26M",keyTotal:"187",fuctionSeconds:"1401781",fuctionDays:"16",status:"正常",usedCPU:"1",searchPeriod:"2019-03-07 10:27"},{masterUrl: "192.168.1.81:6379",version:"4.0.2",hostSystem:"Linux 3.10.0-693.el7.x86_64 x86_64",PID:"8904",RWStaus:"正常",p_c:"从服务器",SLAVENum:"——",Clitens:"11",CPUTotal:"9.57M",CPUUsed:"2.0M",CPUA:"21",CPUUsedMax:"2.55M",keyTotal:"187",fuctionSeconds:"1401734",fuctionDays:"16",status:"正常",usedCPU:"1.2",searchPeriod:"2019-03-07 10:36"}]
+    	grid.setData(data)
+    	grid.on('drawcell',function(e) {
+    		
+    		if(e.field=='status'){
+    			if(e.record.status=='正常'){
+    				e.cellHtml='<span style="color:#33cc33;">正常</span>'
+    			}
+    		}
+    	})
+    	var queryPanel = mini.get("#condition") 
+		queryPanel.setButtons([{
+			 html: '<span class="toolspan">检查时间间隔(s)：</span><input maxlength="30" id="inspection" name="inspection" allowInput="true" value="10"class="mini-textbox toolinput" align="right"/><a class="mini-button toola" style="text-align:center;" iconCls="icon-edit" href="javascript:;">修改</a>'
+		 }]);/*
+		function submit() {
+			var queryForm=new mini.Form("#condition");
+		 	
+            var data = queryForm.getData();
+            queryForm.validate();
+            console.log(data)
+            var isValid=queryForm.isValid();
+		 	if(isValid){
+		 		grid.loading()
+		 		setTimeout(function(){
+		 			grid.setData(data);
+		 		},100)
+		 	}else{
+		 		mini.alert("请填写必填项")
+		 	}
+			
+		}*/
+		//调用时间禁止选中今天之后的时间
+        function onDrawDate(e) {
+		   var date = e.date;
+		   var d = new Date();
+		   if (date.getTime() > d.getTime()) {
+		     e.allowSelect = false;
+		   }
+	 	}
+		
+    </script>
+</body>
+</html>

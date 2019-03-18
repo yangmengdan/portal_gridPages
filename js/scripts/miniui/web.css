@@ -1,0 +1,124 @@
+body{
+	font-family: Microsoft Yahei;
+	font-size:12px;
+	/* width:98.3%;
+	height:98.3%; */
+	padding:10px;
+	/* overflow:hidden; */
+ 	/* margin-top: 10px; */
+}
+
+.mini-required .mini-textbox-border, .mini-required .mini-buttonedit-border {
+    background: none;
+}
+
+
+.query .mini-textbox{
+	margin:5px 0;
+	margin-center:1%;
+	height:30px;
+}
+.query .mini-textbox .mini-textbox-border{
+	height:26px;
+	line-height:26px;
+}
+.query .mini-buttonedit{
+	height:30px;
+}
+.query .mini-buttonedit-border{
+	height:26px;
+	line-height:26px;
+}
+.query .mini-buttonedit-input{
+	height:26px;
+}
+.mini-pager-size .mini-buttonedit {
+	width: 53px;
+}
+.query .mini-textarea{
+	height:50px;
+}
+.query .mini-textarea .mini-textbox-border{
+	height:46px;
+}
+.mini-required .mini-textbox-border, .mini-required .mini-buttonedit-border {
+    background: none;
+}
+
+
+.button-m{
+	width: 83px;height: 26px;line-height: 26px;
+}
+.mini-panel-title .mini-button-text{
+	font-weight:bold;
+	font:12px;
+}
+
+
+/*�����ʽ  */
+ .mini-panel-header{
+	height: 30px;
+	line-height: 30px;
+}
+
+.mini-panel-header-inner{
+	height: 30px;
+	line-height: 30px;
+}
+.mini-panel-title{
+	line-height: 30px;
+}
+.datapanel{
+	margin-top:10px;
+}
+.datapanel .mini-tools{
+	width: auto;
+	height: 23px;
+   	line-height: 23px;
+}
+.datapanel .mini-tools span.mini-button-text{
+	width:auto;
+    display:inline-block;   
+    height:15px;
+    overflow:hidden;    
+    cursor:pointer;
+    margin-left:2px;
+}
+/*���title�а�ť��ʽ  */
+.my-button{
+	border: none;
+	height: 20px;
+	line-height:20px;
+	background: none;
+	float: right;
+}
+.my-button .mini-button-icon{
+    width: 16px;
+    height: 16px;
+}
+
+
+
+/*��ݱ��  */
+.datapanel .mini-grid-row{
+	height: 30px;
+}
+.datapanel .mini-grid-cell {
+   	text-align:center;
+}
+.datapanel .mini-grid-headerCell{
+	font-weight:bold;
+}
+
+
+
+
+
+.mini-tab{
+	color:#2f2f2f;
+	font-size:13px;
+	font-weight:600;
+}
+.mini-tab-active{
+	color:#196aad;
+}

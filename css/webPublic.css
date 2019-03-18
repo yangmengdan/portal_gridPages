@@ -1,0 +1,50 @@
+.mini-panel .mini-tools{
+	width:300px;
+	top: 0;
+	text-align: right;
+}
+.mini-panel .mini-tools .toolspan{
+	width: 150px;
+	height: 25px;
+	text-align: right;
+	position: absolute;
+    top: 0;
+    left: 15px;
+}
+.mini-panel .mini-tools .toolinput{
+	width: 60px;
+	height: 25px;
+	text-align: left;
+	position: absolute;
+    top: 5px;
+    left: 165px;
+}
+
+.mini-panel .mini-tools .toolinput .mini-textbox-border {
+	width: 30px;
+	height: 20px;
+}
+
+.mini-panel .mini-tools .toola{
+	width: 60px;
+	height: 20px;
+	position: absolute;
+    top: 5px;
+    left: 225px;
+}
+.mini-panel .mini-tools .toola span.mini-button-inner {
+	width:60px;
+}
+.mini-panel .mini-tools .toola span.mini-button-text{
+	width:30px;
+}
+.mini-panel .mini-tools .toola .mini-button-icon-text {
+    padding-left: 6px;
+}
+
+.mini-panel .mini-tools .toola .mini-button-icon{
+    height: 16px;
+}
+.mini-grid-headerCell-nowrap{
+	text-align: center;
+}
